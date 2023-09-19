@@ -1,10 +1,8 @@
-{%- test expect_column_to_exist(model, column_name, column_index=None, transform="upper") -%}
+{%- test expect_column_to_exist(model, column_name, column_index=None, transform="upper", quote=True) -%}
 {%- if execute -%}
-
-    {%- set quote_column = model.config.quote -%}
     
     {%- set column_name_transformed = column_name | map(transform) | join -%}
-    {%- set quoted_column_name = (quote_column and '"' ~ column_name_transformed ~ '"') or column_name_transformed -%}
+    {%- set quoted_column_name = (quote and '"' ~ column_name_transformed ~ '"') or column_name_transformed -%}
     
     {%- set relation_column_names = dbt_expectations._get_column_list(model, transform) -%}
 
