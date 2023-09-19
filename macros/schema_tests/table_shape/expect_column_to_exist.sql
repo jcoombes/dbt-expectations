@@ -1,4 +1,4 @@
-{%- test expect_column_to_exist(model, column_name, column_index=None, transform="upper", quote=True) -%}
+{%- test expect_column_to_exist(model, column_name, column_index=None, transform="upper", quote=False) -%}
 {%- if execute -%}
     
     {%- set column_name_transformed = column_name | map(transform) | join -%}
