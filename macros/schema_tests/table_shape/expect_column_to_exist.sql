@@ -5,7 +5,7 @@
     {%- set quoted_column_name = (quote and '"' ~ column_name_transformed ~ '"') or column_name_transformed -%}
     
     {%- set relation_column_names = dbt_expectations._get_column_list(model, transform) -%}
-    {%- set matching_column_index = relation_column_names.index(quoted_column_name) if quoted_column_name in relation_column_names else -1 %}
+    {%- set matching_column_index = relation_column_names.index(quoted_column_name) if column_name_transformed in relation_column_names else -1 %}
     
     {%- set column_index_0 = column_index - 1 if column_index is not none and column_index > 0 else 0 -%}
     {%- set column_index_matches = matching_column_index >= 0 and (column_index is none or matching_column_index == column_index_0) %}
